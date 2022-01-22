@@ -72,10 +72,10 @@ const Create = ({ user, token }) => {
       );
       console.log("CATEGORY CREATE RESPONSE", response);
       setImageUploadButtonName("Upload image");
+      setContent("");
       setState({
         ...state,
         name: "",
-        content: "",
         formData: "",
         buttonText: "Created",
         imageUploadText: "Upload image",
