@@ -1,5 +1,17 @@
 const Link = require("../models/link");
+const User = require("../models/user");
+const Category = require("../models/category");
 const slugify = require("slugify");
+const { linkPublishedParams } = require("../helpers/email");
+const AWS = require("aws-sdk");
+
+AWS.config.update({
+  accessKeyId: process.env.AWS_ACCESS_KEY_ID,
+  secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
+  region: process.env.AWS_REGION,
+});
+
+const ses = new AWS.SES({ apiVersion: "2010-12-01" });
 
 exports.create = (req, res) => {
   const { title, url, categories, type, medium } = req.body;
@@ -16,6 +28,31 @@ exports.create = (req, res) => {
       });
     }
     res.json(data);
+    // find all users in the category
+    User.find({ categories: { $in: categories } }).exec((err, users) => {
+      if (err) {
+        throw new Error(err);
+        console.log("Error finding users to send email on link publish");
+      }
+      Category.find({ _id: { $in: categories } }).exec((err, result) => {
+        data.categories = result;
+
+        for (let i = 0; i < users.length; i++) {
+          const params = linkPublishedParams(users[i].email, data);
+          const sendEmail = ses.sendEmail(params).promise();
+
+          sendEmail
+            .then((success) => {
+              console.log("email submitted to SES ", success);
+              return;
+            })
+            .catch((failure) => {
+              console.log("error on email submitted to SES  ", failure);
+              return;
+            });
+        }
+      });
+    });
   });
 };
 
@@ -96,5 +133,44 @@ exports.clickCount = (req, res) => {
       });
     }
     res.json(result);
+  });
+};
+
+exports.popular = (req, res) => {
+  Link.find()
+    .populate("postedBy", "name")
+    .sort({ clicks: -1 })
+    .limit(3)
+    .exec((err, links) => {
+      if (err) {
+        return res.status(400).json({
+          error: "Links not found",
+        });
+      }
+      res.json(links);
+    });
+};
+
+exports.popularInCategory = (req, res) => {
+  const { slug } = req.params;
+  console.log(slug);
+  Category.findOne({ slug }).exec((err, category) => {
+    if (err) {
+      return res.status(400).json({
+        error: "Could not load categories",
+      });
+    }
+
+    Link.find({ categories: category })
+      .sort({ clicks: -1 })
+      .limit(3)
+      .exec((err, links) => {
+        if (err) {
+          return res.status(400).json({
+            error: "Links not found",
+          });
+        }
+        res.json(links);
+      });
   });
 };
