@@ -1,24 +1,6 @@
 {
-  "/admin/category/[slug]": "pages/admin/category/[slug].js",
-  "/admin/category/create": "pages/admin/category/create.js",
-  "/admin/category/read": "pages/admin/category/read.js",
-  "/admin": "pages/admin.js",
-  "/admin/link/read": "pages/admin/link/read.js",
-  "/auth/activate/[id]": "pages/auth/activate/[id].html",
-  "/auth/password/forgot": "pages/auth/password/forgot.html",
-  "/auth/password/reset/[id]": "pages/auth/password/reset/[id].html",
-  "/": "pages/index.js",
-  "/links/[slug]": "pages/links/[slug].js",
-  "/login": "pages/login.html",
-  "/register": "pages/register.html",
-  "/user": "pages/user.js",
-  "/user/link/[id]": "pages/user/link/[id].js",
-  "/user/link/create": "pages/user/link/create.js",
-  "/user/profile/update": "pages/user/profile/update.js",
-  "/withAdmin": "pages/withAdmin.html",
-  "/withUser": "pages/withUser.html",
   "/_app": "pages/_app.js",
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
-  "/404": "pages/404.html"
+  "/": "pages/index.js"
 }
