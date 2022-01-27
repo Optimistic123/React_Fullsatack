@@ -32,11 +32,15 @@ These are some images:
 3. All link reletaed to a categories
 ![image](https://user-images.githubusercontent.com/47301122/151418126-874bb4d7-b3d9-46c0-8994-f93f4ae2cc0b.png)
 
+4.Infinite Scrooling
  ![Screenshot (14)](https://user-images.githubusercontent.com/47301122/151418252-b81bacf9-9703-46fe-a2cc-805f509ba555.png)
  
+5.Login page
 ![image](https://user-images.githubusercontent.com/47301122/151418355-a071d4f5-bae2-4158-8f94-e927b4e68096.png)
 
+6. Registration page
 ![image](https://user-images.githubusercontent.com/47301122/151418328-28064aca-53e1-4572-99b1-25bbec2bd946.png)
 
+7. Link submission page
 ![image](https://user-images.githubusercontent.com/47301122/151418396-abe4a1a9-c412-4b78-bb8a-90831958cb7c.png)
 
