@@ -23,10 +23,13 @@ Frontend is hosted on Netlify,
 Backend is hosted on Horeku.
 
 These are some images:
+1. Dashboard
 ![image](https://user-images.githubusercontent.com/47301122/151418009-90dba9a5-0fb5-4b1c-8ba9-83fe98c96ad4.png)
 
+2. Home page for all categories nad trending link(most viewed link)
 ![image](https://user-images.githubusercontent.com/47301122/151418074-3d59c935-69a8-4cbf-bb29-c08093d40469.png)
 
+3. All link reletaed to a categories
 ![image](https://user-images.githubusercontent.com/47301122/151418126-874bb4d7-b3d9-46c0-8994-f93f4ae2cc0b.png)
 
  ![Screenshot (14)](https://user-images.githubusercontent.com/47301122/151418252-b81bacf9-9703-46fe-a2cc-805f509ba555.png)
